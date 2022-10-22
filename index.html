@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div id="newtask">
+            <label for="title">Add Title</label> <br>
+            <input type="text" name="title" id="title" placeholder="Add Title"><br>
+            <label for="task">Add Task</label><br>
+            <input type="text" placeholder="Add Tasks"> <br>
+            <label for="date">Add Date</label> <br>
+            <input type="date" id="date" name="date">
+            <button id="push">Add</button>
+        </div>
+        <div id="tasks"></div>
+
+        
+    
+    </div>
+
+    
+
+    </div>
+
+
+
+
+    <script>
+        document.querySelector('#push').onclick = function(){
+    if(document.querySelector('#newtask input').value.length == 0){
+        alert("Kindly Enter Task Name!!!!")
+    }
+
+    else{
+        document.querySelector('#tasks').innerHTML += `
+            <div class="task">
+                <span id="taskname">
+                    ${document.querySelector('#newtask input').value}
+                </span>
+                <button class="delete">
+                    <i class="far fa-trash-alt"></i>
+                </button>
+            </div>
+        `;
+
+        var current_tasks = document.querySelectorAll(".delete");
+        for(var i=0; i<current_tasks.length; i++){
+            current_tasks[i].onclick = function(){
+                this.parentNode.remove();
+            }
+        }
+    }
+}
+    </script>
+</body>
+</html>
